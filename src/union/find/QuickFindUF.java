@@ -13,19 +13,20 @@ public class QuickFindUF {
         }
     }
 
+    private int root(int i) {
+        while (i != id[i]) {
+            i = id[i];
+        }
+        return i;
+    }
+
     public boolean connected(int p, int q) {
-        return id[p] == id[q];
+        return root(p) == root(q);
     }
 
     public void union(int p, int q) {
-        /*
-        为什么要先取出pid，如果if中直接和pid比较会怎么样？
-         */
-        int pid = id[p];
-        int qid = id[q];
-        for (int i = 0; i < id.length; i++) {
-            if (id[i] == pid) id[i] = qid;
-        }
+        int i = id[p];
+        int j = id[q];
+        id[i] = j;
     }
-
 }
