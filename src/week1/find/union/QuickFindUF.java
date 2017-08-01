@@ -1,4 +1,4 @@
-package union.find;
+package week1.find.union;
 
 /**
  * Created by young on 2017/4/13.
@@ -15,6 +15,7 @@ public class QuickFindUF {
 
     private int root(int i) {
         while (i != id[i]) {
+            id[i] = id[id[i]];
             i = id[i];
         }
         return i;

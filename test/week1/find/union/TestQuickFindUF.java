@@ -1,4 +1,4 @@
-package union.find;
+package week1.find.union;
 
 import org.junit.Test;
 
