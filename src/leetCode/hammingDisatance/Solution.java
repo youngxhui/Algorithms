@@ -1,4 +1,4 @@
-package LintCode;
+package leetCode.hammingDisatance;
 
 import java.util.Arrays;
 
