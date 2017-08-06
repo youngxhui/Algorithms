@@ -1,10 +1,13 @@
-package algorithms4th.insertion;
+package algorithms4th.sort;
+
+import algorithms4th.insertion.InsertionKt;
 
 import java.util.Scanner;
 
-public class InsertTest {
+public class Run {
 
-    private static Insertion i = new Insertion();
+    //private static Insertion i = new Insertion();
+    private static InsertionKt i = new InsertionKt();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -17,4 +20,3 @@ public class InsertTest {
         i.show(a);
     }
 }
-
