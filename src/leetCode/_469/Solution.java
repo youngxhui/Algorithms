@@ -1,9 +1,13 @@
 package leetCode._469;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
 public class Solution {
     public static void main(String[] args) {
-        int[] findNums = new int[]{2, 4};
-        int[] nums = new int[]{1, 2, 3, 4};
+        int[] findNums = new int[]{2, 4, 3};
+        int[] nums = new int[]{1, 4, 3, 5};
         int out[] = nextGreaterElement(findNums, nums);
         for (int i = 0; i < out.length; i++) {
             System.out.println(out[i]);
@@ -12,24 +16,15 @@ public class Solution {
 
 
     public static int[] nextGreaterElement(int[] findNums, int[] nums) {
-        int[] out = new int[findNums.length];
-        for (int i = 0; i < findNums.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                if (findNums[i] == nums[j]) {
-                    for (int k = 1; k < nums.length - j; k++) {
-                        if (j + 1 < nums.length && findNums[i] < nums[j + k]) {
-                            out[i] = nums[j + k];
-                            findNums[i] = 0;
-                            break;
-                        }
-                    }
-                    if (findNums[i] != 0) {
-                        out[i] = -1;
-                        break;
-                    }
-                }
-            }
+        Map<Integer, Integer> map = new HashMap<>();
+        Stack<Integer> stack = new Stack<>();
+        for (int num : nums) {
+            while (!stack.isEmpty() && stack.peek() < num)
+                map.put(stack.pop(), num);
+            stack.push(num);
         }
-        return out;
+        for (int i = 0; i < findNums.length; i++)
+            findNums[i] = map.getOrDefault(findNums[i], -1);
+        return findNums;
     }
 }
